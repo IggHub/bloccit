@@ -2,13 +2,19 @@
 <html>
 <head>
   <title>Bloccit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li><%= link_to "Home", welcome_index_path %></li> <!--"Home" is the name displayed; welcome_index is the route to index (type rake routes on terminal); adding _path makes it recognized as a helper method -->
+      <li><%== link_to "About", welcome_about_path %></li>
+    </ul>
 
-<%= yield %>
-
+  <%= yield %>
+</div>
 </body>
 </html>
