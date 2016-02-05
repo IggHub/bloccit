@@ -1,6 +1,6 @@
 require "random_data" #calls random_data
 
-50.times do
+10.times do
 
   Post.create!(
 
@@ -10,7 +10,7 @@ require "random_data" #calls random_data
 end
 posts = Post.all
 
-100.times do
+20.times do
   Comment.create!(
 
     post: posts.sample,

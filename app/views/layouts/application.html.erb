@@ -10,8 +10,8 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs">
-      <li><%= link_to "Home", welcome_index_path %></li> <!--"Home" is the name displayed; welcome_index is the route to index (type rake routes on terminal); adding _path makes it recognized as a helper method -->
-      <li><%== link_to "About", welcome_about_path %></li>
+      <li><%= link_to "Bloccit", root_path %></li>
+      <li><%= link_to "About", about_path %></li>
     </ul>
 
   <%= yield %>
