@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     @posts.body = params[:post][:body]
 
     if @posts.save
-      flash[:notice] = "Post was saved!"
+      flash[:notice] = "Question was saved!"
       redirect_to @posts
     else
       flash.new[:alert] = "Alert. Alert. Error saving post. Try again."
@@ -57,5 +57,5 @@ class PostsController < ApplicationController
       render :show
     end
   end
-  
+
 end

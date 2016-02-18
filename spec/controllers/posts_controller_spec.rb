@@ -111,7 +111,7 @@ require 'rails_helper'
       expect(response).to redirect_to posts_path
     end
   end
-      
+
 
   describe "PUT update" do
     it "updates posts with expected attributes" do

@@ -2,14 +2,15 @@ require "random_data" #calls random_data
 
 10.times do
 
-  Post.create!(
+  Question.create!(
 
     title: RandomData.random_sentence,
-    body: RandomData.random_paragraph
+    body: RandomData.random_paragraph,
+    resolved: false
   )
 end
-posts = Post.all
-
+questions = Question.all
+=begin
 20.times do
   Comment.create!(
 
@@ -17,7 +18,7 @@ posts = Post.all
     body: RandomData.random_paragraph
   )
 end
-
+=end
 puts "Seed finished"
-puts "#{Post.count} post created"
-puts "#{Comment.count} comments created"
+puts "#{Question.count} questions created"
+#puts "#{Comment.count} comments created"

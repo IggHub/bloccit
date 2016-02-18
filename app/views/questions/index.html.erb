@@ -1,0 +1,19 @@
+<h1>All Questions</h1>
+<h3>Don't ask difficult questions</h3>
+<% @questions.each do |que| %>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+
+          <%= link_to que.title, que %>
+
+      </h4>
+    </div>
+  </div>
+<% end %>
+
+<p>
+  <div class="col-md-4">
+    <%= link_to "New Question", new_question_path(@questions), class: 'btn btn-success'%>
+  </div>
+</p>
