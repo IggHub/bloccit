@@ -1,31 +1,32 @@
 require 'random_data'
 
 class PostsController < ApplicationController
-  def index
-
-    @posts = Post.all
-  end
+#  def index
+#    @posts = Post.all
+#  end
 
   def show
-    @posts = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def new
-    @posts = Post.new
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.new
   end
 
   def edit
-    @posts = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
-    @posts = Post.find(params[:id])
-    @posts.title = params[:post][:title]
-    @posts.body = params[:post][:body]
+    @post = Post.find(params[:id])
+    @post.title = params[:post][:title]
+    @post.body = params[:post][:body]
 
-    if @posts.save
+    if @post.save
       flash[:notice] = "Post was updated."
-      redirect_to @posts
+#      redirect_to @post
+      redirect_to [@post.topic, @post]
     else
       flash.now[:alert] = "There was an error saving the post. Please try again."
       render :edit
@@ -33,13 +34,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    @posts = Post.new
-    @posts.title = params[:post][:title]
-    @posts.body = params[:post][:body]
-
-    if @posts.save
+    @post = Post.new
+    @post.title = params[:post][:title]
+    @post.body = params[:post][:body]
+    @topic = Topic.find(params[:topic_id])
+    @post.topic = @topic
+    if @post.save
       flash[:notice] = "Post was saved!"
-      redirect_to @posts
+      redirect_to [@topic,@post]
+#      redirect_to @post
     else
       flash.new[:alert] = "Alert. Alert. Error saving post. Try again."
       render :new
@@ -47,15 +50,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @posts = Post.find(params[:id])
+    @post = Post.find(params[:id])
 
-    if @posts.destroy
-      flash[:notice] = "\"#{@posts.title}\" was deleted successfully."
-      redirect_to posts_path
+    if @post.destroy
+      flash[:notice] = "\"#{@post.title}\" was deleted successfully."
+#      redirect_to post_path
+      redirect_to @post.topic
     else
       flash.now[:alert] = "Error!"
       render :show
     end
   end
-  
+
 end
