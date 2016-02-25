@@ -8,15 +8,16 @@ require "random_data" #calls random_data
 end
 topics = Topic.all
 
-10.times do
+15.times do
   SponsoredPost.create!(
     topic: topics.sample,
     title: RandomData.random_sentence,
-    body: RandomData.random_paragraph
+    body: RandomData.random_paragraph,
+    price: rand(1..100)
   )
 end
 
-sponsoredposts = SponsoredPost.all
+sponsored_posts = SponsoredPost.all
 
 30.times do
   Post.create!(
