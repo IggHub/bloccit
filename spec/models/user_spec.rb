@@ -42,23 +42,25 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "user name capitalization" do
-    it "should capitalize bobby" do
-      user1= User.new(name: "bobby Jones", email: "bjones@bloccit.com", password: "bobbypassword")
-      user1.save!
-      expect(user1.name).to eq("Bobby Jones")
+    describe "user name capitalization" do
+      it "should capitalize bobby" do
+        user1= User.new(name: "bobby Jones", email: "bjones@bloccit.com", password: "bobbypassword")
+        user1.save!
+        expect(user1.name).to eq("Bobby Jones")
+      end
+
+      it "should capitalize Johannson" do
+        user2 = User.new(name: "johannson da magnificant", email: "awesomedude@bloccit.com", password: "tooawesomeforschool")
+        user2.save!
+        expect(user2.name).to eq("Johannson Da Magnificant")
+      end
+
+      it "should leave Steve be" do
+        user3 = User.new(name: "Steve Cook", email: "steve@bloccit.com", password: "1234567890")
+        user3.save!
+        expect(user3.name).to eq("Steve Cook")
+      end
     end
 
-    it "should capitalize Johannson" do
-      user2 = User.new(name: "johannson da magnificant", email: "awesomedude@bloccit.com", password: "tooawesomeforschool")
-      user2.save!
-      expect(user2.name).to eq("Johannson Da Magnificant")
-    end
 
-    it "should leave Steve be" do
-      user3 = User.new(name: "Steve Cook", email: "steve@bloccit.com", password: "1234567890")
-      user3.save!
-      expect(user3.name).to eq("Steve Cook")
-    end
-  end
 end

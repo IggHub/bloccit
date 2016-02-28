@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-# #2
   before_save :string_splitter, :downCaseIt
 
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
@@ -22,5 +21,4 @@ class User < ActiveRecord::Base
   def downCaseIt
     self.email = email.downcase
   end
-
 end
