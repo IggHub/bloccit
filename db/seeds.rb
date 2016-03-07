@@ -37,13 +37,20 @@ posts = Post.all
   )
 end
 
-user = User.first
-user.update_attributes!(
-  email: 'igoririanto@rocketmail.com',
+admin = User.create!(
+  name: 'AdminMan',
+  email: 'admin@bloccit.com',
+  password: 'helloyou',
+  role: 'admin'
+)
+
+member = User.create!(
+  name: 'MemberMan',
+  email: 'member@bloccit.com',
   password: 'helloworld'
-  )
 
-
+)
+#by default any registered user is a member, unless specified
 
 puts "Seed finished"
 puts "#{Post.count} post created"
