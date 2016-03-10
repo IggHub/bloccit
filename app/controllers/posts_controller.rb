@@ -4,7 +4,9 @@ class PostsController < ApplicationController
 
   before_action :require_sign_in, except: :show
 #any other action REQUIRES user to sign in, except show. Anyone, even un-signed user can view the posts!
-  before_action :authorize_user, except: [:show, :new, :create]
+  before_action :authorize_to_destroy, only: [:destroy]
+  before_action :authorize_to_edit_update, only: [:edit, :update]
+
   def show
     @post = Post.find(params[:id])
   end
@@ -68,11 +70,21 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body)
   end
 
-  def authorize_user
+  def authorize_to_destroy
     post = Post.find(params[:id])
 
     unless current_user == post.user || current_user.admin?
       flash[:alert] = "You must be an admin to do that"
+      redirect_to [post.topic, post]
+    end
+  end
+
+  def authorize_to_edit_update
+    post = Post.find(params[:id])
+
+
+    unless current_user == post.user || current_user.admin? || current_user.moderator?
+      flash[:alert] = "Need to be admin/moderator/ owner to do that"
       redirect_to [post.topic, post]
     end
   end

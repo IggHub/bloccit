@@ -40,15 +40,22 @@ end
 admin = User.create!(
   name: 'AdminMan',
   email: 'admin@bloccit.com',
-  password: 'helloyou',
+  password: 'helloadmin',
   role: 'admin'
 )
 
 member = User.create!(
   name: 'MemberMan',
   email: 'member@bloccit.com',
-  password: 'helloworld'
+  password: 'hellomember'
 
+)
+
+moderator = User.create!(
+  name: 'ModeratorMan',
+  email: 'moderator@bloccit.com',
+  password: 'hellomod',
+  role: 'moderator'
 )
 #by default any registered user is a member, unless specified
 
