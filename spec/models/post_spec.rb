@@ -11,6 +11,9 @@ RSpec.describe Post, type: :model do
   let(:user) {User.create!(name: "Bloccit User", email: "user.bloccit.com", password: "helloworld")}
   let(:post) {topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)}
 #topic.post associates post to topic
+
+  it {is_expected.to have_many(:labelings)}
+  it {is_expected.to have_many(:labels).through(:labelings)}
   it { is_expected. to belong_to(:topic)}
   it { is_expected.to belong_to(:user)}
   #post belongs to user
