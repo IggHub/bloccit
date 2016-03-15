@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
-  
+  has_many :topics
+
   before_save { self.email = email.downcase }
   before_save { self.role ||= :member }
 

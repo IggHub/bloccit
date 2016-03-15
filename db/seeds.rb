@@ -32,6 +32,7 @@ posts = Post.all
 50.times do
   Comment.create!(
     user: users.sample,
+    topic: topics.sample,
     post: posts.sample,
     body: RandomData.random_paragraph
   )
