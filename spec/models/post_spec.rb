@@ -11,6 +11,7 @@ RSpec.describe Post, type: :model do
   let(:user) {User.create!(name: "Bloccit User", email: "user.bloccit.com", password: "helloworld")}
   let(:post) {topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)}
 #topic.post associates post to topic
+  let(:post_new) {topic.posts.new(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)}
 
   it {is_expected.to have_many(:labelings)}
   it {is_expected.to have_many(:labels).through(:labelings)}
@@ -85,5 +86,22 @@ RSpec.describe Post, type: :model do
         end
       end
    end
+
+   describe "create_vote callback" do
+
+     it "sets the up_vote to 1" do
+       expect(post.up_votes).to eq(1)
+     end
+
+     it "triggers create_vote on creation" do
+       expect(post_new).to receive(:create_vote).at_least(:once)
+       post_new.save
+     end
+
+     it "confirms post's first vote belongs to user" do
+      expect(post.votes.first.user).to eq(post.user)
+    end
+   end
+
 
 end

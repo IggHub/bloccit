@@ -5,6 +5,8 @@ class PostsController < ApplicationController
   before_action :require_sign_in, except: :show
 #any other action REQUIRES user to sign in, except show. Anyone, even un-signed user can view the posts!
   before_action :authorize_user, except: [:show, :new, :create]
+  
+
   def show
     @post = Post.find(params[:id])
   end
