@@ -48,8 +48,8 @@ admin = User.create!(
 )
 
 member = User.create!(
-  name: 'MemberMan',
-  email: 'member@bloccit.com',
+  name: 'Iggy',
+  email: 'igoririanto@rocketmail.com',
   password: 'helloworld'
 
 )
