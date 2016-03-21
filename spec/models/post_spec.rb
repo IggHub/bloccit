@@ -6,10 +6,9 @@ RSpec.describe Post, type: :model do
   #let(:post){ Post.create!(title: "New Post Title", body: "New Post Body")}
 #removed when working on ch 34
 
-  let(:topic) {Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph)}
-
-  let(:user) {User.create!(name: "Bloccit User", email: "user.bloccit.com", password: "helloworld")}
-  let(:post) {topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)}
+  let(:topic) { create(:topic) }
+  let(:user) { create(:user) }
+  let(:post) { create(:post) }
 #topic.post associates post to topic
 
   it {is_expected.to have_many(:labelings)}

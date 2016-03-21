@@ -1,3 +1,5 @@
+require 'random_data'
+
 class UsersController < ApplicationController
 
   def new
@@ -24,6 +26,12 @@ class UsersController < ApplicationController
     @user.email = params[:user][:email]
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
+  end
+
+  def show
+    @user = User.find(params[:id])
+    #retrieve a user instance (User.find...) and set it to an instance vairable (@user)
+    @posts = @user.posts.visible_to(current_user)
   end
 
 end
