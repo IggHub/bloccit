@@ -19,8 +19,25 @@
    </div>
  </div>
 
- <h2>Posts</h2>
- <%= render @user.posts %>
+<h2>Posts</h2>
+<% if @user.posts.count != 0%>
+  <%= render @user.posts %>
+<% else %>
+  <br><%= "#{@user.name} has no post. #{@user.name} needs scooby-snacks!"%>
+<% end %>
 
- <h2>Comments</h2>
+<h2>Comments</h2>
+<% if @user.comments.count != 0%>
  <%= render @user.comments %>
+<% else %>
+  <br> <%= "#{@user.name} has no comment.  LIFE IS RUFF" %>
+<% end %>
+
+<h2>Favorited Posts</h2>
+<% if @user.favorites.count != 0 %>
+  <% @user.favorites.each do |favorite| %>
+      <%= render partial: 'favorites/userfavorite', locals: { post: favorite.post } %>
+  <%end%>
+<% else %>
+  <br><%= "#{@user.name} has no favorite. He is still a favorite in my heart! DAAAWW" %> 
+<% end %>

@@ -6,7 +6,7 @@ include SessionsHelper
    let(:my_user) {create(:user)}
    let(:other_user) {create(:user)}
    let(:my_post) {create(:post, topic: my_topic, user: my_user)}
-   let(:my_comment) { Comment.create!(body: 'Comment Body', post: my_post, user: my_user) }
+   let(:my_comment) { create(:comment, user: my_user, post: my_post)}
 
  # #6
    context "guest" do
