@@ -8,7 +8,7 @@ require 'rails_helper'
    let(:my_comment) { Comment.create!(body: 'Comment Body', post: my_post, user: my_user) }
 
    context "unauthenticated user" do
-     it "GET index returns http success" do
+=begin     it "GET index returns http success" do
        get :index
        expect(response).to have_http_status(:success)
      end
@@ -23,7 +23,7 @@ require 'rails_helper'
        response_hash = JSON.parse response.body
        expect(response_hash['comments']).to_not be_nil
      end
-
+=end
      it "PUT update returns http unauthenticated" do
        put :update, topic_id: my_topic.id, id: my_post.id, post: {title: my_post.title, body: my_post.body}
        expect(response).to have_http_status(401)

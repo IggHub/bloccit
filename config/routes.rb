@@ -27,9 +27,9 @@ end
     namespace :v1 do
       resources :users, only: [:index, :show]
       resources :topics, only: [:index, :show] do
-        resources :posts
+        resources :posts, only: [:update, :create, :destroy]
       end
-      resources :comments, only: [:index, :show]
+      #resources :comments, only: [:index, :show]
     end
   end
 
