@@ -24,10 +24,12 @@ end
   root 'welcome#index'
 
   namespace :api do
-    namespace :v1 do
-      resources :users, only: [:index, :show, :create, :update]
-      resources :topics, except: [:edit, :new]
-    end
-  end
+   namespace :v1 do
+     resources :users, only: [:index, :show, :create, :update]
+     resources :topics, except: [:edit, :new] do
+       resources :posts, only: [:update, :create, :destroy]
+     end
+   end
+ end
 
 end
