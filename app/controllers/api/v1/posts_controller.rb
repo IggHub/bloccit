@@ -12,4 +12,8 @@ class Api::V1::PostsController < Api::V1::BaseController
     post = Post.find(params[:id])
     render json: post.to_json(include: :comments), status: 200
   end
+
+  def update
+  end
+  
 end

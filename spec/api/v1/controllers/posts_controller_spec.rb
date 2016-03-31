@@ -23,6 +23,12 @@ require 'rails_helper'
        response_hash = JSON.parse response.body
        expect(response_hash['comments']).to_not be_nil
      end
+
+     it "PUT update returns http unauthenticated" do
+       put :update, topic_id: my_topic.id, id: my_post.id, post: {title: my_post.title, body: my_post.body}
+       expect(response).to have_http_status(401)
+     end
+
    end
 
    context "unauthorized user" do
