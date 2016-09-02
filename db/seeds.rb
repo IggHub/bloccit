@@ -47,12 +47,7 @@ admin = User.create!(
   role: 'admin'
 )
 
-member = User.create!(
-  name: 'Iggy',
-  email: 'igoririanto@rocketmail.com',
-  password: 'helloworld'
 
-)
 #by default any registered user is a member, unless specified
 
 puts "Seed finished"

@@ -1,32 +1,11 @@
-##Bloccit: a Reddit replica to teach the fundamentals of web development and Rails.
+# Bloccit
+_A Reddit replica to teach the fundamentals of web development and Rails_
 
 Made with my mentor at [Bloc](http://bloc.io)
 
-== README
+Demo: [Bloccit](https://sheltered-everglades-14741.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Bloccit](http://i.imgur.com/k9xvn9o.png)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Usage
+Bloccit is highly capable reddit replica for users to share information. 
